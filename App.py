@@ -1,29 +1,3 @@
-#import streamlit as st
-#from io import StringIO, BytesIO
-#from PIL import Image
-
-
-#st.header("Text Extraction\nFrom Image")
-
-#types = ['jpg', 'png', 'jpeg']
-
-#uploaded_file = st.file_uploader("Upload image file", type=types)
-
-#image_content = None
-#flag = False
-#image = st.empty()
-
-# if uploaded_file is not None:
-#    st.write(f"Uploaded file name: {uploaded_file.name}")
-#    image.image(uploaded_file)
-#    image_content = uploaded_file.getvalue()
-#    st.write(type(image_content))
-#    flag = True
-
-# if flag:
-#    image = Image.open(uploaded_file)
-# ----------------------------------------------------------------------------------------
-
 
 import easyocr as ocr  # OCR
 import streamlit as st  # Web App
@@ -42,7 +16,7 @@ page_bg_img = """
 """
 
 css = """
-.css-1x8cf1d {
+.css-5uatcg {
     # background-color : #29e319;
     padding: 12px 35px;
     border-radius: 30px;
@@ -50,24 +24,12 @@ css = """
     border: unset;
     outline: unset;
 }
-.css-1x8cf1d:hover{
+.css-5uatcg:hover{
     color : #29e319;
     background-image: linear-gradient(87deg,#363557,#82829A);
 }
 .row-widget{
     text-align: center;
-}
-.css-81oif8 {
-    color: white;
-}
-.css-fg4pbf{
-    color: white;  
-}
-.css-rvekum{
-    color: white !important;
-}
-.st-dc{
-    color: white;
 }
 """
 
@@ -76,7 +38,6 @@ css = """
 # st.markdown(f'<img src="text extraction from image/text_extract_proj/image/TechSmith-Blog-ExtractText.png" class="img-fluid">', unsafe_allow_html=True)
 image = Image.open('image/TechSmith-Blog-ExtractText.png')
 st.image(image, width=120) 
-
 st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
 
 # title
@@ -84,9 +45,13 @@ st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
 page_title = '<p style="font-family:sans-serif; color: #29e319; font-size: 42px;">Text Extraction from Images</p>'
 st.markdown(page_title, unsafe_allow_html=True)
 
+# text pra
+text_pra = '<p style="font-family:sans-serif; color: white; font-size: 15px;">We extract text from the uploaded Image and convert the extracted text to audio.</p>'
+st.markdown(text_pra, unsafe_allow_html=True)
+
+
 # subtitle
 #st.markdown("## Text Extraction From Image")
-
 st.markdown(page_bg_img,unsafe_allow_html=True)
 
 # image uploader
@@ -105,7 +70,7 @@ if image is not None:
     input_image = Image.open(image)  # read image
     st.image(input_image)  # display image
 
-    with st.spinner("🤖 AI is at Work! "): # Run spinner while extracting text.
+    with st.spinner("🤖 Algorithm is at Work! "): # Run spinner while extracting text.
 
         result = reader.readtext(np.array(input_image))
 
@@ -153,5 +118,5 @@ if image is not None:
         #    form_holder.empty()
 else:
     st.write("Upload an Image")
-    
+
 
