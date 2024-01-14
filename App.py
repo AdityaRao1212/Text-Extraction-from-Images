@@ -61,7 +61,7 @@ image = st.file_uploader(label="Upload your image here",
 
 @st.cache
 def load_model():
-    reader = ocr.Reader(['en','hi'], model_storage_directory='.')
+    reader = ocr.Reader(['en','hi'], model_storage_directory='.', gpu=False)
     return reader
 
 reader = load_model()  # load model
